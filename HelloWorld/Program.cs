@@ -6,7 +6,28 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Howdy Y'all!!");
+            
+            Console.WriteLine($"Type in the dialect you understand best from the following options:  {args[0]}, {args[1]}, {args[2]}");
+            var userSelectedDialect = Console.ReadLine();
+
+            switch (userSelectedDialect)
+            {
+                case "Southern":
+                    Console.WriteLine("Howdy Ya'll!!");
+                    break;
+
+                case "Spanish":
+                    Console.WriteLine("Hola Amigo!");
+                    break;
+
+                case "English":
+                    Console.WriteLine("Hello there!");
+                    break;
+
+                default:
+                    Console.WriteLine("Looks like you didn't select one of the options. No greeting for you!");
+                    break;
+            }
 
             var animals = new string[] { "Triceratops", "Gorilla", "Corgi", "Toucan", "Cat", "Dog", "Mouse" };
             char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
