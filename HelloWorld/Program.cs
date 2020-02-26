@@ -8,43 +8,40 @@ namespace HelloWorld
         {
             Console.WriteLine("Howdy Y'all!!");
 
-            var animals = new string[] { "Triceratops", "Gorilla", "Corgi", "Toucan" };
+            var animals = new string[] { "Triceratops", "Gorilla", "Corgi", "Toucan", "Cat", "Dog", "Mouse" };
             char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
             var numOfVowels = 0;
-            var lastIsVowel = false;
+            var lastIsLetterE = false;
 
             foreach (var animal in animals)
             {
+                var animalLength = animal.Length;
+                var lastLetter = animal[animalLength - 1];
                 foreach (var letter in animal)
                 {
-                    bool foundVowel = false;
                     foreach (char vowel in vowels)
                     {
-                        if (vowel == letter && lastIsVowel)
-                        {
-                            foundVowel = true;
-                            lastIsVowel = true;
-                            break;
-                        }
-                        else if (vowel == letter && !lastIsVowel)
+                        if (vowel == letter)
                         {
                             numOfVowels++;
-                            foundVowel = true;
-                            lastIsVowel = true;
                             break;
                         }
+                        if (lastLetter == 'e')
+                        {
+                            lastIsLetterE = true;
+                        }
+
                     }
 
-                    if (!foundVowel)
-                        lastIsVowel = false;
                 }
-                // for each animal check whether it has more than one syllable (vowel check with exceptions)
-                var notMonoSyllabic = false;
                 
-                if (notMonoSyllabic)
+                if (numOfVowels >= 2 && !lastIsLetterE) 
                 {
                     Console.WriteLine(animal);
                 }
+
+                numOfVowels = 0;
+                
             }
 
             Console.ReadKey();
